@@ -36,9 +36,21 @@ return [
     ],
 
     'google' => [
-        'client_id' => env('CLIENT_ID'),
-        'client_secret' => env('CLIENTSECRET_ID'),
+        'client_id' => env('CLIENT_ID_GOOGLE'),
+        'client_secret' => env('CLIENTSECRET_ID_GOOGLE'),
         'redirect' => 'http://127.0.0.1:8000/login/google/callback',
+    ],
+
+    'github' => [
+        'client_id' => env('CLIENT_ID_GITHUB'),         // Your GitHub Client ID
+        'client_secret' => env('CLIENTSECRET_ID_GITHUB'), // Your GitHub Client Secret
+        'redirect' => 'http://127.0.0.1:8000/login/github/callback',
+    ],
+
+    'twitter' => [
+        'client_id' => env('CLIENT_ID_TWITTER'),         // Your GitHub Client ID
+        'client_secret' => env('CLIENTSECRET_ID_TWITTER'), // Your GitHub Client Secret
+        'redirect' => 'http://127.0.0.1:8000/login/twitter/callback',
     ],
 
 ];

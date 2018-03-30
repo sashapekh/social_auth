@@ -17,8 +17,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/logout', function (){
+    Auth::logout();
+    return redirect('/');
+});
+
 Route::get('/home', 'HomeController@index')->name('home');
 
-// routes for social
-Route::get('login/google', 'Auth\LoginController@redirectToProvider');
-Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');
+// routes for social auth
+Route::get('/login/{service}', 'Social\SocialAuth@redirectToProvider');
+Route::get('/login/{service}/callback', 'Social\SocialAuth@handleProviderCallback');

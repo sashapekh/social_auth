@@ -45,36 +45,5 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function redirectToProvider()
-    {
-        return Socialite::driver('google')->redirect();
-    }
 
-    /**
-     * Obtain the user information from GitHub.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-    public function handleProviderCallback()
-    {
-        $userSocial = Socialite::driver('google')->user();
-
-        $findUser = User::where('email',$userSocial->email)->first();
-
-        if($findUser) {
-            Auth::login($findUser);
-            return redirect('/');
-        }
-        else {
-            $user = new User;
-            $user->name = $userSocial->name;
-            $user->email = $userSocial->email;
-            $user->password = bcrypt(123456);
-            $user->save();
-            Auth::login($user);
-
-             return redirect('/');
-        }
-    }
 }
